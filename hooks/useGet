@@ -1,0 +1,19 @@
+import { useEffect, useState } from "react"
+
+
+
+export const useGet = (url) => {
+    const [data, setData] = useState(null);
+  
+    useEffect(()=>{
+        const getData = async() =>{
+            const res = await fetch(url);
+            const newData = await res.json();
+            setData(newData);
+        }
+        getData();
+        
+    }, [url])
+    return { data }
+}
+

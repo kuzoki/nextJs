@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import {useRouter} from 'next/router'  
 import {  useContext, useState } from 'react';
 import {  CountriesContext } from '../context'
@@ -11,7 +12,10 @@ export default function RandomCountry() {
         router.push(`/${CountryData[randomNumber].name.common}`)
     }
   return (
-    <button className='button-float' onClick={()=>updateCountry()}>Random Country You Should Visit</button>
+    <div>
+      <Link href='/quiz' ><button className='button-float btn-quiz'>Take A quiz</button></Link>
+      <button className='button-float' onClick={()=>updateCountry()}>Random Country You Should Visit</button>
+    </div>
   )
 }
 

@@ -137,6 +137,10 @@ button{
   animation-duration: 4s;
   animation-iteration-count: infinite;
 }
+.btn-quiz{
+  bottom: 60px;
+  background: #024e28;
+}
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
   40% {transform: translateY(-30px);} 

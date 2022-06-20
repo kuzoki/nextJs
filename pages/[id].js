@@ -32,14 +32,14 @@ export default function Single(){
     }
     return(
       
-      <div className="main">
+      <div className="main-full">
           <div className='single-wrap'>
             <Link href='/' ><div className='btn-back'><i className="fa-solid fa-arrow-left-long" data-v-5455f2a1=""></i>Back Home</div></Link>
             {country ? country.map((country, i)=>(
               <div className='single' key={i}>
                 <div>
-                  {country.flags.svg ? <Image className='flag' width='600' height='400' src={country.flags.svg} alt="ima"></Image>:<></> }
-                  {country.coatOfArms.svg ? <Image className='flag' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></Image>:<></> }
+                  {country.flags.svg ? <img className='flag' width='600' height='400' src={country.flags.svg} alt="ima"></img>:<></> }
+                  {country.coatOfArms.svg ? <img className='flag' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></img>:<></> }
                 </div>
                 <div className='desc'>
                   <h4 className='name'>{country.name.common}</h4>

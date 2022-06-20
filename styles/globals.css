@@ -22,13 +22,13 @@ a{
   color: black;
 }
 .main {
-  max-width: 1440px;
+  max-width: 1024px;
   margin: 0 auto;
   padding-left: 12px;
   padding-right: 12px;
 }
 .grid{
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   display: grid;
   column-gap: 10px;
  row-gap: 30px;
@@ -188,6 +188,9 @@ button{
   flex-direction: row;
   flex-wrap: wrap;
 }
+.main-full{
+  padding: 0 10px;
+}
 .single, .single .list{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -196,8 +199,8 @@ button{
 .single .flag{
   vertical-align: middle;
   width: 100%;
-  padding-right: 80px;
-  height: 420px;
+  
+  height: auto;
   margin-bottom: 10px;
   object-fit: contain;
 }
@@ -302,10 +305,12 @@ button{
 .quizblock .grid{
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
+  align-items: baseline;
 }
 .quizblock img{
   width: 100%;
-  object-fit: cover;
+  
+  height: auto;
 }
 ul{
   margin: 0;

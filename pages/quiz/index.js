@@ -85,11 +85,13 @@ export default function Quiz() {
                 <div onClick={()=>generateQuiz()} className="StartTheGame" style={ gameState ? { display:'none'} : {display : 'inline-block'} }   > Start</div> 
                 <div className='score' style={ gameState ? { display:'inline-block'} : {display : 'none'} }>{score}</div>
             </div>
+            <div onClick={()=>generateQuiz()} className="btn-next" style={ next ? { display:'inline-block'} : {display : 'none'} }   > Next Guess</div> 
+
             <div className='quizblock '>
-                <h3>Guess The Country... ?</h3>
+                <h3>Guess The Country... ?</h3>    
                 {quiz.map((data, i)=>(
                     <div key={i} className="grid">
-                        <Image  src={data.Country_flag} width='600' height='400' alt="image"></Image>
+                        <Image  src={data.Country_flag} width='600' height='300' alt="image"></Image>
                         <div>
                             <ul className='quiz-list' ref={quizList} >
                                 {
@@ -102,7 +104,6 @@ export default function Quiz() {
                     </div>
                 ))}
             </div>
-            <div onClick={()=>generateQuiz()} className="btn-next" style={ next ? { display:'inline-block'} : {display : 'none'} }   > Next Guess</div> 
         </div>
         
     )

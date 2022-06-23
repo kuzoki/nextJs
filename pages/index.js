@@ -2,9 +2,10 @@
 import {  useContext, useEffect, useState } from 'react';
 import  Link  from 'next/link';
 import Image from 'next/dist/client/image';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {  CountriesContext } from '../context';
-import styles from '../styles/Home.module.css'
+
 export default function Home() {
   const { CountryData, changeIcon} = useContext(CountriesContext);
   const [region, setRegion] = useState('all');
@@ -65,15 +66,21 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className='main'>
-          <div className='mainHeader'> 
-            <div className="searchBox">
-              <input type="text" placeholder="Search for a country..."  onChange={(e)=>getFilter(e.target.value)}/>
-            </div>
-          
-            <div className="filters-box">
-              <select value={region} onChange={(e)=>getByRegion(e.target.value)}>
+    <div className='overflow-hidden'>
+      <div className='container mx-auto' >
+          < div className='flex flex-row	justify-between w-full mb-6'> 
+      
+            <input type="search" 
+              className="block w-6/12 p-4 pl-10 w-full text-sm text-black bg-white rounded-lg outline-0	
+              dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+              placeholder="Search for a country..." 
+              onChange={(e)=>getFilter(e.target.value)}
+            />
+
+            <select 
+                className='w-2/12 px-4 rounded-lg text-black bg-white outline-0	'
+                value={region}
+                onChange={(e)=>getByRegion(e.target.value)}>
                 {/* <option>Filter by Region :</option> */}
                 <option value="all">All Regions</option>
                 <option value="africa">Africa</option>
@@ -81,30 +88,41 @@ export default function Home() {
                 <option value="europe">Europe</option>
                 <option value="oceania">Oceania</option>
                 <option value="americas">Americas</option>
-              </select>
-            </div>
+            </select>
+            
           </div>
-
-
+ 
+          
+       
           {/* Card */}
           
-          <div className='grid'>
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
             {
             data ? data.map((country, index)=>(
               <Link href={`/${country.name.common}`} key={index}>
-                <div className='item'>
-                  <Image  className='image_item' width="600" height="400" src={country.flags.png} alt="ima"></Image> 
-                  <div className='desc'>
-                    <h4 className='header-text'>{country.name.common}</h4>
-                    <p className="body-text"><strong>Population:</strong> { Number(country.population).toLocaleString()}</p>
-                    <p className="body-text"><strong>Region:</strong> { country.region }</p>
-                    <p className="body-text"><strong>Capital:</strong> { country.capital }</p>
+                <div className='bg-white'>
+                  <Image  className='w-ful object-cover' width="600" height="400" src={country.flags.png} alt="ima"></Image>
+                  <div className="px-4 py-4">
+                    <div className="font-bold text-xl mb-2">{country.name.common}</div>
+                  </div> 
+                  <div className="px-4 pt-2 pb-2">
+                    <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                      <span className='font-semibold'>Population: </span>{ Number(country.population).toLocaleString()}
+                    </p>
+                    <p className="inline-block py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    <span className='font-semibold'>Region:</span> { country.region }
+                    </p>
+                    <p className="inline-block py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    <span className='font-semibold'>Capital:</span> { country.capital }
+                    </p>
                   </div>
+                 
                 </div>
               </Link>
             )): <div>Loading ...</div>
           }
           </div>
+          
       </div>
     </div>
   )

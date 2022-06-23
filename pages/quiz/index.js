@@ -79,18 +79,22 @@ export default function Quiz() {
     }
     
     return (
-        <div className='main quiz'>
-            <Link href='/' ><div className='btn-back'><i className="fa-solid fa-arrow-left-long" data-v-5455f2a1=""></i> Back</div></Link>
-            <div className='flex'>
-                <div onClick={()=>generateQuiz()} className="StartTheGame" style={ gameState ? { display:'none'} : {display : 'inline-block'} }   > Start</div> 
-                <div className='score' style={ gameState ? { display:'inline-block'} : {display : 'none'} }>{score}</div>
+        <div className='container mx-auto quiz'>
+           <div className='flex flex-row justify-between items-center mb-8'>
+                <Link href='/' ><div className='btn-simple '><i className="mr-4 fa-solid fa-arrow-left-long" data-v-5455f2a1=""></i>Back Home</div></Link>
+                <h3 className='text-2xl text-black '>Guess the Country Flag Game</h3>
+           </div>
+            <div className='grid  place-items-center'>
+                <div onClick={()=>generateQuiz()} className="bg-green-500 text-lg hover:bg-slate-500 cursor-pointer text-white py-4 px-8 rounded-full mt-16 " style={ gameState ? { display:'none'} : {display : 'inline-block'} }   > Let's Play the game</div> 
+                <div className='rounded-full w-12 h-12 bg-slate-500 text-white' style={ gameState ? { display:'inline-block'} : {display : 'none'} }>
+                    <p className='grid  place-items-center h-full'>{score}</p>
+                </div>
             </div>
-            <div onClick={()=>generateQuiz()} className="btn-next" style={ next ? { display:'inline-block'} : {display : 'none'} }   > Next Guess</div> 
+            <div onClick={()=>generateQuiz()} className="btn-rounded" style={ next ? { display:'inline-block'} : {display : 'none'} }   > Next Guess</div> 
 
-            <div className='quizblock '>
-                <h3>Guess The Country... ?</h3>    
+            <div className='quizblock '>  
                 {quiz.map((data, i)=>(
-                    <div key={i} className="grid">
+                    <div key={i} className="grid grid-cols-2 gap-5 items-baseline">
                         <Image  src={data.Country_flag} width='600' height='300' alt="image"></Image>
                         <div>
                             <ul className='quiz-list' ref={quizList} >
@@ -104,6 +108,8 @@ export default function Quiz() {
                     </div>
                 ))}
             </div>
+            <div onClick={()=>generateQuiz()} className="btn-rounded" style={ next ? { display:'inline-block'} : {display : 'none'} }   > Next Guess</div> 
+
         </div>
         
     )

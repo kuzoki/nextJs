@@ -32,42 +32,57 @@ export default function Single(){
     }
     return(
       
-      <div className="main-full">
-          <div className='single-wrap'>
-            <Link href='/' ><div className='btn-back'><i className="fa-solid fa-arrow-left-long" data-v-5455f2a1=""></i>Back Home</div></Link>
+      <div className="container mx-auto">
+          <div className=''>
+            <Link href='/' ><div className='btn-simple mb-8'><i className="fa-solid fa-arrow-left-long mr-4" data-v-5455f2a1=""></i>Back Home</div></Link>
             {country ? country.map((country, i)=>(
-              <div className='single' key={i}>
+              <div className='grid grid-cols-2 gap-4' key={i}>
                 <div>
-                  {country.flags.svg ? <img className='flag' width='600' height='400' src={country.flags.svg} alt="ima"></img>:<></> }
-                  {country.coatOfArms.svg ? <img className='flag' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></img>:<></> }
+                  {country.flags.svg ? <img className='w-full mb-4' width='600' height='400' src={country.flags.svg} alt="ima"></img>:<></> }
+                  {country.coatOfArms.svg ? <img className='w-full' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></img>:<></> }
                 </div>
-                <div className='desc'>
-                  <h4 className='name'>{country.name.common}</h4>
-                  <div className="list">
-                      <div>
-                        <p className="body-text"> <span>Official Name: </span>{country.name.official}</p>
-                        <p className="body-text"><span>Population:</span> { Number(country.population).toLocaleString()}</p>
-                        <p className="body-text"><span>Population:</span> { country.region }</p>
-                        <p className="body-text"><span>Sub Region:</span> { country.subregion }</p>
-                        <p className="body-text"><span>Capital:</span> { country.capital }</p>
+                <div className=''>
+                  <h4 className='font-bold text-4xl mb-10'>{country.name.common}</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
+                      <div className='flex flex-col'>
+                        <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                          <span className='font-semibold'>Official Name: </span>{country.name.official}
+                        </p>
+                        <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                          <span className='font-semibold'>Population: </span>{ Number(country.population).toLocaleString()}
+                        </p>
+                        <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                          <span className='font-semibold'>Region:</span> { country.region }
+                        </p>
+                        <p className="inline-block py-1 text-sm  text-gray-700 mr-2 mb-2">
+                         <span className='font-semibold'>Capital:</span> { country.capital }
+                        </p>
                       </div>
-                      <div>
-                        <p className="body-text"><span>Top Level Domain:</span> {country.tld[0]}</p>
-                        <p className="body-text"><span>Currencies:</span>  {  Object.values(country.currencies)[0].name}</p>
-                        <div className="body-text flex-wrap"><span>Languages:</span>
-                          {Object.values(country.languages).map((val,i)=>(<span key={i} className="native">{val},</span>))}
+                      <div className='flex flex-col'>
+                        <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                         <span className='font-semibold'>Top Level Domain:</span> { country.tld[0] }
+                        </p>
+                        <p className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2">
+                         <span className='font-semibold'>Currencies:</span> {  Object.values(country.currencies)[0].name}
+                        </p>
+                        <div className="inline-block py-1 text-sm text-gray-700 mr-2 mb-2"><span className='font-semibold'>Languages: </span>
+                          {Object.values(country.languages).map((val,i)=>(<span key={i} >{val}</span>))}
                         </div>
                       </div>
                   </div>
-                  <div className="borderList">
-                        <div className="body-text"><span >Borders:</span></div>
+                  <div className="w-full flex flex-row mb-8">
+                        <div className="inline-block py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Borders:</div>
+                        <div className='flex flex-row flex-wrap	'>
                         { 
-                          country.borders ? country.borders.map((val)=>(<span key={val} className="border-country" onClick={()=>updateCountry(val)}>{val}</span>)) : <span className="border-country">Have no Borders</span>
+                          country.borders ? country.borders.map((val)=>(<span  key={val} 
+                            className="btn-rounded" 
+                            onClick={()=>updateCountry(val)}>{val}</span>)) : <span className="text-base rounded-full bg-white px-4 py-2 text-gray-700">Have no Borders</span>
                         }
+                        </div>
                   </div>
                   {country.maps.googleMaps ?
-                    <div className='map'>
-                      <a href={country.maps.googleMaps} target="_blank" rel="noreferrer"> See On Google Map:  <i className="fa-solid fa-map-location-dot"></i></a>
+                    <div className='btn-rounded inline-block'>
+                      <a href={country.maps.googleMaps} target="_blank" rel="noreferrer"> Check The country on Google Map:  <i className="fa-solid fa-map-location-dot"></i></a>
                     </div> : <></>
                   }
                   

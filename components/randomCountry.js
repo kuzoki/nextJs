@@ -13,8 +13,7 @@ export default function RandomCountry() {
     }
   return (
     <div>
-      <Link href='/quiz' ><button className='button-float btn-quiz'>Take A quiz</button></Link>
-      <button className='button-float' onClick={()=>updateCountry()}>Random Country You Should Visit</button>
+      <button className='nav-link' onClick={()=>updateCountry()}>Random Country You Should Visit</button>
     </div>
   )
 }

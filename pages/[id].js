@@ -38,8 +38,8 @@ export default function Single(){
             {country ? country.map((country, i)=>(
               <div className='grid grid-cols-2 gap-4' key={i}>
                 <div>
-                  {country.flags.svg ? <img className='w-full mb-4' width='600' height='400' src={country.flags.svg} alt="ima"></img>:<></> }
-                  {country.coatOfArms.svg ? <img className='w-full' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></img>:<></> }
+                  {country.flags.svg ? <Image className='w-full mb-4' width='600' height='400' src={country.flags.svg} alt="ima"></Image>:<></> }
+                  {country.coatOfArms.svg ? <Image className='w-full' width='600' height='400' src={country.coatOfArms.svg} alt="ima"></Image>:<></> }
                 </div>
                 <div className=''>
                   <h4 className='font-bold text-4xl mb-10'>{country.name.common}</h4>
